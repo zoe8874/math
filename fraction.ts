@@ -1,12 +1,19 @@
 import { roundTo } from "./utils.ts";
 
+
 export class Fraction {
+  
   constructor(
-    private numerator: number,
-    private denominator: number,
-  ) {}
+  private numerator: number,
+  private denominator: number,
+) {
+  if (denominator === 0) {
+    throw new Error("Denominator cannot be 0");
+  }
+}
 
   public add(other: Fraction) {
+    
     const newNumerator =
       this.numerator * other.denominator + other.numerator * this.denominator;
     const newDenominator = this.denominator * other.denominator;
@@ -34,6 +41,8 @@ export class Fraction {
     const newDenominator = this.denominator * other.numerator;
     this.numerator = newNumerator;
     this.denominator = newDenominator;
+
+    
   }
 
   public toFloat(precision: number): number {
@@ -56,4 +65,6 @@ export class Fraction {
     }
     return new Fraction(numerator, denominator);
   }
+
+  
 }
