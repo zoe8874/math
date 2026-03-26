@@ -1,5 +1,8 @@
 import { assertAlmostEquals, assertEquals } from "@std/assert";
 import { Fraction } from "./fraction.ts";
+import { assertThrows } from "https://deno.land/std/assert/mod.ts";
+
+
 
 Deno.test("fraction of 1/1 is 1.0", () => {
   // Arrange
@@ -83,3 +86,10 @@ const actual = f.toString();
   assertEquals(f.toString(), "3/4");
 });
 
+Deno.test("constructor should fail with 0 denominator", () => {
+  assertThrows(
+    () => new Fraction(3, 0),
+    Error,
+    "Denominator cannot be 0"
+  );
+});
