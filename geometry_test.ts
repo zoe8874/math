@@ -11,3 +11,17 @@ Deno.test("circumference of a circle with radius 5 is roughtly 31.416", () => {
   // Then
   assertAlmostEquals(actual, 31.416, 0.01);
 });
+
+Deno.test("Area Test"),()=>{
+   
+  const circle= new Circle (new Point2D (3,4), 5)
+
+  
+  const actual = circle.area();
+
+ 
+  assertAlmostEquals(actual, 78.539, 0.01);
+
+}
+
+
