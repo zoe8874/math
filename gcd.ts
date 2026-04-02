@@ -28,12 +28,15 @@ export class GCD {
     a = Math.abs(a);
     b = Math.abs(b);
 
-     if (a === b) {
-        return a;
+    if (a === 0) return b;
+    if (b === 0) return a;
+
+    while (b !== 0) {
+      const temp = b;
+      b = a % b;
+      a = temp;
     }
 
-    const c = Math.max(a, b) - Math.min(a, b);
-
-    return this.gcdEuclid(Math.min(a, b), c);
-}
+    return a;
+  }
 }

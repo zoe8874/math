@@ -86,6 +86,44 @@ const actual = f.toString();
   assertEquals(f.toString(), "3/4");
 });
 
+Deno.test("constructor auto-simplifies 2/4 to 1/2", () => {
+  const f = new Fraction(2, 4);
+  assertEquals(f.toString(), "1/2");
+});
+
+Deno.test("parse auto-simplifies 2/4 to 1/2", () => {
+  const f = Fraction.parse("2/4");
+  assertEquals(f.toString(), "1/2");
+});
+
+Deno.test("add auto-simplifies result", () => {
+  const left = new Fraction(1, 2);
+  const right = new Fraction(1, 6);
+  left.add(right);
+  assertEquals(left.toString(), "2/3");
+});
+
+Deno.test("subtract auto-simplifies result", () => {
+  const left = new Fraction(1, 2);
+  const right = new Fraction(1, 3);
+  left.subtract(right);
+  assertEquals(left.toString(), "1/6");
+});
+
+Deno.test("multiply auto-simplifies result", () => {
+  const left = new Fraction(2, 3);
+  const right = new Fraction(3, 4);
+  left.multiply(right);
+  assertEquals(left.toString(), "1/2");
+});
+
+Deno.test("divide auto-simplifies result", () => {
+  const left = new Fraction(1, 2);
+  const right = new Fraction(1, 4);
+  left.divide(right);
+  assertEquals(left.toString(), "2/1");
+});
+
 //Deno.test("constructor should fail with 0 denominator", () => {
  // assertThrows(
   //  () => new Fraction(3, 0),
