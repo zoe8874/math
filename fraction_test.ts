@@ -96,8 +96,8 @@ const actual = f.toString();
 
 Deno.test("cancel Test expechtet 1/2 ",()=>{
 const f = new Fraction (2,4);
-;
+const result = f.cancel(f);
 
-assertEquals(f.cancel(f),1,2)
+assertEquals(result.toString(),"1/2")
 
 })

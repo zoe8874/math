@@ -68,7 +68,7 @@ export class Fraction {
   }
 
   public cancel(other: Fraction): Fraction {
-    const gcd = new GCD(this.numerator, this.denominator).gcdEuclid();
+    const gcd = new GCD(this.numerator, this.denominator).gcdEuclid(this.numerator, this.denominator);
     const newNumerator = this.numerator / gcd;
     const newDenominator = this.denominator / gcd;
     return new Fraction(newNumerator, newDenominator);
