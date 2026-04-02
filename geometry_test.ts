@@ -63,7 +63,7 @@ Deno.test("rectangle circumference should be 30 ", () => {
 const actual = rect.circumference();
 
  
-  assertEquals(actual, 30);
+  assertEquals(actual, 50);
 });
 
 

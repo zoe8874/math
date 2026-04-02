@@ -5,17 +5,17 @@ export class GCD {
         private readonly b: number
     ) {}
 
-    public gcdBruteForce(): number {
+    public gcdBruteForce(a: number, b: number): number {
         let i: number;
 
-        if (this.a < this.b) {
-            i = this.a;
+        if (a < b) {
+            i = a;
         } else {
-            i = this.b;
+            i = b;
         }
 
         while (i > 0) {
-            if (this.a % i === 0 && this.b % i === 0) {
+            if (a % i === 0 && b % i === 0) {
                 return i;
             }
             i--;
@@ -23,4 +23,17 @@ export class GCD {
 
         return 1; 
     }
+
+   public gcdEuclid(a: number, b: number): number {
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+     if (a === b) {
+        return a;
+    }
+
+    const c = Math.max(a, b) - Math.min(a, b);
+
+    return this.gcdEuclid(Math.min(a, b), c);
+}
 }

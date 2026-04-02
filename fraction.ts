@@ -1,4 +1,5 @@
 import { roundTo } from "./utils.ts";
+import { GCD } from "./gcd.ts";
 
 
 export class Fraction {
@@ -64,6 +65,13 @@ export class Fraction {
       throw new Error(`non-numeric numerator/denominator`);
     }
     return new Fraction(numerator, denominator);
+  }
+
+  public cancel(other: Fraction): Fraction {
+    const gcd = new GCD(this.numerator, this.denominator).gcdEuclid();
+    const newNumerator = this.numerator / gcd;
+    const newDenominator = this.denominator / gcd;
+    return new Fraction(newNumerator, newDenominator);
   }
 
   
